@@ -1,3 +1,5 @@
+// --- compass ---------------------------------------------------------------------------------------------------------
+
 @import "compass/reset";
 @import "compass/css3/border-radius";
 @import "compass/css3/box-shadow";
@@ -16,16 +18,6 @@ $domo-body-color: #79391a;
 $page-width: 750px;
 
 // --- mixins ----------------------------------------------------------------------------------------------------------
-
-
-@mixin box($x: 0, $y: 0, $width: inherit, $height: inherit)
-{
-    position: absolute;
-    top: $x;
-    left: $y;
-    width: $width;
-    height: $height;
-}
 
 @mixin block($name, $width, $height, $depth)
 {
