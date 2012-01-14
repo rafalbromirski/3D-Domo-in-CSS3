@@ -191,6 +191,22 @@ body
             height: 12px;
             background: url(../images/tip.png) no-repeat 0 0 transparent;
         }
+
+        .error
+        {
+            background: #d42f1b;
+            color: #fff;
+            padding: 8px 10px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: none;
+            @include border-radius(5px);
+
+            .no-csstransforms3d &
+            {
+                display: block;
+            }
+        }
     }
 
     .social-medias
