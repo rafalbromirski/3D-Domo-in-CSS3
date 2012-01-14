@@ -1,0 +1,471 @@
+@import "compass/reset";
+@import "compass/css3/border-radius";
+@import "compass/css3/box-shadow";
+@import "compass/css3/gradient";
+@import "compass/css3/images";
+@import "compass/css3/transform";
+@import "compass/css3/transition";
+@import "compass/utilities/general/clearfix";
+
+// --- content variables -----------------------------------------------------------------------------------------------
+
+$background: #f9f8f4;
+$text-color: #8e8c86;
+
+$domo-body-color: #79391a;
+
+$page-width: 750px;
+
+// --- mixins ----------------------------------------------------------------------------------------------------------
+
+
+@mixin box($x: 0, $y: 0, $width: inherit, $height: inherit)
+{
+    position: absolute;
+    top: $x;
+    left: $y;
+    width: $width;
+    height: $height;
+}
+
+@mixin block($name, $width, $height, $depth)
+{
+    .#{$name}
+    {
+        width: $width;
+        height: $height;
+
+        .front, .back
+        {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: inherit;
+            height: inherit;
+        }
+
+        .front
+        {
+            background: url(../images/domo_pattern_front.jpg) repeat 0 0 $domo-body-color;
+        }
+
+        .back
+        {
+            background: url(../images/domo_pattern_back.jpg) repeat 0 0 $domo-body-color;
+            -webkit-transform: translateZ(-#{$depth});
+        }
+
+        .left
+        {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: $depth;
+            height: inherit;
+            background: url(../images/domo_pattern_rear.jpg) repeat 0 0 $domo-body-color;
+            -webkit-transform-origin: left bottom;
+            -webkit-transform: rotateY(90deg);
+        }
+
+        .right
+        {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: $depth;
+            height: inherit;
+            background: url(../images/domo_pattern_rear.jpg) repeat 0 0 $domo-body-color;
+            -webkit-transform-origin: right bottom;
+            -webkit-transform: rotateY(-90deg);
+        }
+
+        .top
+        {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: inherit;
+            height: $depth;
+            background: url(../images/domo_pattern_top.jpg) repeat 0 0;
+            -webkit-transform-origin: top left;
+            -webkit-transform: rotateX(-90deg);
+        }
+
+        .bottom
+        {
+            position: absolute;
+            top: $height;
+            left: 0;
+            width: inherit;
+            height: $depth;
+            background: url(../images/domo_pattern_bottom.jpg) repeat 0 0;
+            -webkit-transform-origin: left top;
+            -webkit-transform: rotateX(-90deg);
+        }
+    }
+}
+
+
+// --- content ---------------------------------------------------------------------------------------------------------
+
+html, body
+{
+  height: 100%;
+}
+
+
+body
+{
+  font: 12px Helvetica, Arial, sans-serif;
+  background: url(../images/bg-pattern.png) repeat 0 0 $background;
+  color: $text-color;
+}
+
+.content
+{
+    min-height: 100%;
+
+    .controls
+    {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 10;
+        display: none;
+
+        input
+        {
+            display: block;
+            margin-bottom: 10px;
+        }
+    }
+
+    .viewport
+    {
+        width: $page-width;
+        height: 500px;
+        margin: 0 auto;
+
+        -webkit-perspective: 1200;
+        -webkit-perspective-origin: 50% 10%;
+
+        .perspective
+        {
+            -webkit-transform-style: preserve-3d;
+            height: inherit;
+
+            .touch &
+            {
+                @include transition(all 1s);
+            }
+        }
+    }
+
+    /*
+    .plane
+    {
+        width: 100em;
+        height: 100em;
+        -webkit-transform: rotateX(-90deg);
+        margin: 0 auto;
+        background: rgba(255,255,255,.2);
+        border: 2px solid #000;
+        background-size: 8px;
+        display: none;
+    }
+    */
+
+    .description
+    {
+        width: $page-width - 300;
+        position: relative;
+        margin: 50px auto;
+        padding: 20px;
+        background: #fff;
+        border: 1px solid;
+        border-color: #d1d0cd;
+        border-color: rgba(0,0,0,.15);
+        @include border-radius(10px);
+        @include box-shadow(0 1px 0 #fff);
+
+        &:before
+        {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: -12px;
+            margin-left: -10px;
+            display: block;
+            width: 20px;
+            height: 12px;
+            background: url(../images/tip.png) no-repeat 0 0 transparent;
+        }
+    }
+
+    .social-medias
+    {
+        padding-top: 10px;
+
+        li
+        {
+            display: inline-block;
+            vertical-align: top;
+
+            &:first-child
+            {
+                padding-right: 15px;
+            }
+        }
+    }
+
+}
+
+.domo
+{
+    display: block;
+    width: 18em;
+    height: 26em;
+    position: relative;
+    top: 50%;
+    margin: -13em auto 0;
+    font-size: 8px;
+
+    -webkit-transform-style: preserve-3d;
+    -webkit-transform-origin: right bottom;
+    /*-webkit-animation: walk 1s infinite linear;*/
+
+    @include block(body, 18em, 21em, 8em);
+
+    .body
+    {
+        position: relative;
+
+        -webkit-transform-style: preserve-3d;
+        -webkit-transform: translateZ(5em);
+
+        .front
+        {
+            background: url(../images/domo.jpg) no-repeat 0 0, url(../images/domo_pattern_front.jpg) repeat 0 0 $domo-body-color;
+            background-size: 100%, auto;
+        }
+    }
+
+
+    @include block(leg, 7em, 5em, 8em);
+
+    .leg
+    {
+        position: absolute;
+        top: 21em;
+
+        -webkit-transform-style: preserve-3d;
+        -webkit-transform: translateZ(5em);
+
+        &.left
+        {
+            left: 0;
+        }
+
+        &.right
+        {
+            right: 0;
+        }
+    }
+
+
+    @include block(arm, 4.5em, 11.5em, 4.5em);
+
+    .arm
+    {
+        position: absolute;
+        top: 7em;
+
+        -webkit-transform-style: preserve-3d;
+
+        &.left
+        {
+            right: -4.5em;
+            -webkit-transform: rotateX(110deg);
+            -webkit-transform-origin: left top;
+            -webkit-animation: left-hand 1.3s infinite ease-in-out;
+        }
+
+        &.right
+        {
+            left: -4.5em;
+            -webkit-transform: rotateX(60deg);
+            -webkit-transform-origin: right top;
+            -webkit-animation: right-hand 1.3s infinite ease-in-out;
+        }
+
+    }
+}
+
+
+@-webkit-keyframes right-hand
+{
+    0%, 100%
+    {
+        -webkit-transform: rotateX(60deg);
+    }
+
+    50%
+    {
+        -webkit-transform: rotateX(110deg);
+    }
+}
+
+@-webkit-keyframes left-hand
+{
+    0%, 100%
+    {
+        -webkit-transform: rotateX(110deg);
+    }
+
+    50%
+    {
+        -webkit-transform: rotateX(60deg);
+    }
+}
+
+@-webkit-keyframes walk
+{
+    0%
+    {
+        -webkit-transform-origin: right bottom;
+        -webkit-transform: rotateZ(0);
+    }
+
+    25%
+    {
+        -webkit-transform-origin: right bottom;
+        -webkit-transform: rotateZ(5deg);
+    }
+
+    50%
+    {
+        -webkit-transform-origin: right bottom;
+        -webkit-transform: rotateZ(0);
+    }
+
+    50.5%
+    {
+        -webkit-transform-origin: left bottom;
+    }
+
+    75%
+    {
+        -webkit-transform-origin: left bottom;
+        -webkit-transform: rotateZ(-5deg);
+    }
+
+    100%
+    {
+        -webkit-transform-origin: left bottom;
+        -webkit-transform: rotateZ(0);
+    }
+}
+
+// --- text ------------------------------------------------------------------------------------------------------------
+
+h1
+{
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+p
+{
+    color: darken($text-color, 10%);
+    line-height: 18px;
+    padding: 5px 0;
+}
+
+strong
+{
+    font-weight: bold;
+}
+
+a
+{
+    color: #008aff;
+    font-weight: bold;
+    display: inline-block;
+    text-decoration:none;
+    padding: 0px 3px;
+    @include border-radius(3px);
+    @include transition(all .2s);
+
+    &:hover
+    {
+        background: #008aff;
+        color: #fff;
+    }
+}
+
+// --- other resolutions -----------------------------------------------------------------------------------------------
+
+@media screen and (max-width: 750px)
+{
+    /* to avoid the adjustment of fonts on iOS devices you should keep this line */
+    * { -webkit-text-size-adjust: none; -ms-text-size-adjust: none; }
+
+    .content
+    {
+        .viewport
+        {
+            width: 640px;
+            height: 350px;
+        }
+    }
+
+    .domo
+    {
+        font-size: 6px;
+    }
+}
+
+@media screen and (max-width: 640px)
+{
+    .content
+    {
+        .viewport
+        {
+            width: 470px;
+        }
+
+        .description
+        {
+            width: 400px;
+        }
+    }
+}
+
+@media screen and (max-width: 480px)
+{
+    .content
+    {
+        .viewport
+        {
+            width: 400px;
+        }
+
+        .description
+        {
+            width: 310px;
+        }
+    }
+}
+
+@media screen and (max-width: 320px)
+{
+    .content
+    {
+        .viewport, .description
+        {
+            width: 260px;
+        }
+    }
+}
