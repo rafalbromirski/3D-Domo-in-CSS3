@@ -91,22 +91,39 @@ body {
   display: block;
   margin-bottom: 10px;
 }
+.content .domo_thumb {
+  margin: 0 auto;
+  display: none;
+  text-align: center;
+}
+.no-csstransforms3d .content .domo_thumb {
+  display: block;
+}
 .content .viewport {
   width: 750px;
   height: 500px;
   margin: 0 auto;
   -webkit-perspective: 1200;
   -webkit-perspective-origin: 50% 10%;
+  -moz-perspective: 1200px;
+  -moz-perspective-origin: 50% 10%;
+  perspective: 1200;
+  perspective-origin: 50% 10%;
 }
 .content .viewport .perspective {
-  -webkit-transform-style: preserve-3d;
   height: inherit;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
 }
 .touch .content .viewport .perspective {
   -moz-transition: all 1s;
   -webkit-transition: all 1s;
   -o-transition: all 1s;
   transition: all 1s;
+}
+.no-csstransforms3d .content .viewport {
+  display: none;
 }
 .content .description {
   width: 450px;
@@ -178,10 +195,15 @@ body {
   -webkit-transform-style: preserve-3d;
   -webkit-transform-origin: right bottom;
   /*-webkit-animation: walk 1s infinite linear;*/
+  -moz-transform-style: preserve-3d;
+  -moz-transform-origin: right bottom;
+  transform-style: preserve-3d;
+  transform-origin: right bottom;
 }
 .domo .body {
   width: 18em;
   height: 21em;
+  -moz-transform-style: preserve-3d;
 }
 .domo .body .front, .domo .body .back {
   position: absolute;
@@ -196,6 +218,8 @@ body {
 .domo .body .back {
   background: url(../images/domo_pattern_back.jpg) repeat 0 0 #79391a;
   -webkit-transform: translateZ(-8em);
+  -moz-transform: translateZ(-8em);
+  transform: translateZ(-8em);
 }
 .domo .body .left {
   position: absolute;
@@ -206,6 +230,10 @@ body {
   background: url(../images/domo_pattern_rear.jpg) repeat 0 0 #79391a;
   -webkit-transform-origin: left bottom;
   -webkit-transform: rotateY(90deg);
+  -moz-transform-origin: left bottom;
+  -moz-transform: rotateY(90deg);
+  transform-origin: left bottom;
+  transform: rotateY(90deg);
 }
 .domo .body .right {
   position: absolute;
@@ -216,6 +244,10 @@ body {
   background: url(../images/domo_pattern_rear.jpg) repeat 0 0 #79391a;
   -webkit-transform-origin: right bottom;
   -webkit-transform: rotateY(-90deg);
+  -moz-transform-origin: right bottom;
+  -moz-transform: rotateY(-90deg);
+  transform-origin: right bottom;
+  transform: rotateY(-90deg);
 }
 .domo .body .top {
   position: absolute;
@@ -226,6 +258,10 @@ body {
   background: url(../images/domo_pattern_top.jpg) repeat 0 0;
   -webkit-transform-origin: top left;
   -webkit-transform: rotateX(-90deg);
+  -moz-transform-origin: top left;
+  -moz-transform: rotateX(-90deg);
+  transform-origin: top left;
+  transform: rotateX(-90deg);
 }
 .domo .body .bottom {
   position: absolute;
@@ -236,11 +272,19 @@ body {
   background: url(../images/domo_pattern_bottom.jpg) repeat 0 0;
   -webkit-transform-origin: left top;
   -webkit-transform: rotateX(-90deg);
+  -moz-transform-origin: left top;
+  -moz-transform: rotateX(-90deg);
+  transform-origin: left top;
+  transform: rotateX(-90deg);
 }
 .domo .body {
   position: relative;
   -webkit-transform-style: preserve-3d;
   -webkit-transform: translateZ(5em);
+  -moz-transform-style: preserve-3d;
+  -moz-transform: translateZ(5em);
+  transform-style: preserve-3d;
+  transform: translateZ(5em);
 }
 .domo .body .front {
   background: url(../images/domo.jpg) no-repeat 0 0, url(../images/domo_pattern_front.jpg) repeat 0 0 #79391a;
@@ -249,6 +293,7 @@ body {
 .domo .leg {
   width: 7em;
   height: 5em;
+  -moz-transform-style: preserve-3d;
 }
 .domo .leg .front, .domo .leg .back {
   position: absolute;
@@ -263,6 +308,8 @@ body {
 .domo .leg .back {
   background: url(../images/domo_pattern_back.jpg) repeat 0 0 #79391a;
   -webkit-transform: translateZ(-8em);
+  -moz-transform: translateZ(-8em);
+  transform: translateZ(-8em);
 }
 .domo .leg .left {
   position: absolute;
@@ -273,6 +320,10 @@ body {
   background: url(../images/domo_pattern_rear.jpg) repeat 0 0 #79391a;
   -webkit-transform-origin: left bottom;
   -webkit-transform: rotateY(90deg);
+  -moz-transform-origin: left bottom;
+  -moz-transform: rotateY(90deg);
+  transform-origin: left bottom;
+  transform: rotateY(90deg);
 }
 .domo .leg .right {
   position: absolute;
@@ -283,6 +334,10 @@ body {
   background: url(../images/domo_pattern_rear.jpg) repeat 0 0 #79391a;
   -webkit-transform-origin: right bottom;
   -webkit-transform: rotateY(-90deg);
+  -moz-transform-origin: right bottom;
+  -moz-transform: rotateY(-90deg);
+  transform-origin: right bottom;
+  transform: rotateY(-90deg);
 }
 .domo .leg .top {
   position: absolute;
@@ -293,6 +348,10 @@ body {
   background: url(../images/domo_pattern_top.jpg) repeat 0 0;
   -webkit-transform-origin: top left;
   -webkit-transform: rotateX(-90deg);
+  -moz-transform-origin: top left;
+  -moz-transform: rotateX(-90deg);
+  transform-origin: top left;
+  transform: rotateX(-90deg);
 }
 .domo .leg .bottom {
   position: absolute;
@@ -303,12 +362,20 @@ body {
   background: url(../images/domo_pattern_bottom.jpg) repeat 0 0;
   -webkit-transform-origin: left top;
   -webkit-transform: rotateX(-90deg);
+  -moz-transform-origin: left top;
+  -moz-transform: rotateX(-90deg);
+  transform-origin: left top;
+  transform: rotateX(-90deg);
 }
 .domo .leg {
   position: absolute;
   top: 21em;
   -webkit-transform-style: preserve-3d;
   -webkit-transform: translateZ(5em);
+  -moz-transform-style: preserve-3d;
+  -moz-transform: translateZ(5em);
+  transform-style: preserve-3d;
+  transform: translateZ(5em);
 }
 .domo .leg.left {
   left: 0;
@@ -319,6 +386,7 @@ body {
 .domo .arm {
   width: 4.5em;
   height: 11.5em;
+  -moz-transform-style: preserve-3d;
 }
 .domo .arm .front, .domo .arm .back {
   position: absolute;
@@ -333,6 +401,8 @@ body {
 .domo .arm .back {
   background: url(../images/domo_pattern_back.jpg) repeat 0 0 #79391a;
   -webkit-transform: translateZ(-4.5em);
+  -moz-transform: translateZ(-4.5em);
+  transform: translateZ(-4.5em);
 }
 .domo .arm .left {
   position: absolute;
@@ -343,6 +413,10 @@ body {
   background: url(../images/domo_pattern_rear.jpg) repeat 0 0 #79391a;
   -webkit-transform-origin: left bottom;
   -webkit-transform: rotateY(90deg);
+  -moz-transform-origin: left bottom;
+  -moz-transform: rotateY(90deg);
+  transform-origin: left bottom;
+  transform: rotateY(90deg);
 }
 .domo .arm .right {
   position: absolute;
@@ -353,6 +427,10 @@ body {
   background: url(../images/domo_pattern_rear.jpg) repeat 0 0 #79391a;
   -webkit-transform-origin: right bottom;
   -webkit-transform: rotateY(-90deg);
+  -moz-transform-origin: right bottom;
+  -moz-transform: rotateY(-90deg);
+  transform-origin: right bottom;
+  transform: rotateY(-90deg);
 }
 .domo .arm .top {
   position: absolute;
@@ -363,6 +441,10 @@ body {
   background: url(../images/domo_pattern_top.jpg) repeat 0 0;
   -webkit-transform-origin: top left;
   -webkit-transform: rotateX(-90deg);
+  -moz-transform-origin: top left;
+  -moz-transform: rotateX(-90deg);
+  transform-origin: top left;
+  transform: rotateX(-90deg);
 }
 .domo .arm .bottom {
   position: absolute;
@@ -373,23 +455,41 @@ body {
   background: url(../images/domo_pattern_bottom.jpg) repeat 0 0;
   -webkit-transform-origin: left top;
   -webkit-transform: rotateX(-90deg);
+  -moz-transform-origin: left top;
+  -moz-transform: rotateX(-90deg);
+  transform-origin: left top;
+  transform: rotateX(-90deg);
 }
 .domo .arm {
   position: absolute;
   top: 7em;
   -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
 }
 .domo .arm.left {
   right: -4.5em;
   -webkit-transform: rotateX(110deg);
   -webkit-transform-origin: left top;
   -webkit-animation: left-hand 1.3s infinite ease-in-out;
+  -moz-transform: rotateX(110deg);
+  -moz-transform-origin: left top;
+  -moz-animation: left-hand 1.3s infinite ease-in-out;
+  transform: rotateX(110deg);
+  transform-origin: left top;
+  animation: left-hand 1.3s infinite ease-in-out;
 }
 .domo .arm.right {
   left: -4.5em;
   -webkit-transform: rotateX(60deg);
   -webkit-transform-origin: right top;
   -webkit-animation: right-hand 1.3s infinite ease-in-out;
+  -moz-transform: rotateX(60deg);
+  -moz-transform-origin: right top;
+  -moz-animation: right-hand 1.3s infinite ease-in-out;
+  transform: rotateX(60deg);
+  transform-origin: right top;
+  animation: right-hand 1.3s infinite ease-in-out;
 }
 
 @-webkit-keyframes right-hand {
@@ -402,6 +502,26 @@ body {
   }
 }
 
+@-moz-keyframes right-hand {
+  0%, 100% {
+    -moz-transform: rotateX(60deg);
+  }
+
+  50% {
+    -moz-transform: rotateX(110deg);
+  }
+}
+
+@keyframes right-hand {
+  0%, 100% {
+    transform: rotateX(60deg);
+  }
+
+  50% {
+    transform: rotateX(110deg);
+  }
+}
+
 @-webkit-keyframes left-hand {
   0%, 100% {
     -webkit-transform: rotateX(110deg);
@@ -409,6 +529,26 @@ body {
 
   50% {
     -webkit-transform: rotateX(60deg);
+  }
+}
+
+@-moz-keyframes left-hand {
+  0%, 100% {
+    -moz-transform: rotateX(110deg);
+  }
+
+  50% {
+    -moz-transform: rotateX(60deg);
+  }
+}
+
+@keyframes left-hand {
+  0%, 100% {
+    transform: rotateX(110deg);
+  }
+
+  50% {
+    transform: rotateX(60deg);
   }
 }
 

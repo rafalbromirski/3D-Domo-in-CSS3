@@ -4,7 +4,13 @@ $(function() {
     xyz.y = $("input[name=y_axis]").val() || 0;
     xyz.z = $("input[name=z_axis]").val() || 0;
 
-    $(".perspective").css("-webkit-transform", "rotateX(" + xyz.x + "deg) rotateY(" + xyz.y + "deg) rotateZ(" + xyz.z + "deg)");
+    $(".perspective").css(
+        {
+            "-webkit-transform": "rotateX(" + xyz.x + "deg) rotateY(" + xyz.y + "deg) rotateZ(" + xyz.z + "deg)",
+            "-moz-transform": "rotateX(" + xyz.x + "deg) rotateY(" + xyz.y + "deg) rotateZ(" + xyz.z + "deg)",
+            "transform": "rotateX(" + xyz.x + "deg) rotateY(" + xyz.y + "deg) rotateZ(" + xyz.z + "deg)"
+        }
+    );
 
     $("input[type=range]").on("change", function() {
         if ($(this).attr("name") == "x_axis") {
@@ -17,7 +23,14 @@ $(function() {
             xyz.z = $(this).val();
         }
 
-        $(".perspective").css("-webkit-transform", "rotateX(" + xyz.x + "deg) rotateY(" + xyz.y + "deg) rotateZ(" + xyz.z + "deg)");
+        $(".perspective").css(
+            {
+                "-webkit-transform": "rotateX(" + xyz.x + "deg) rotateY(" + xyz.y + "deg) rotateZ(" + xyz.z + "deg)",
+                "-moz-transform": "rotateX(" + xyz.x + "deg) rotateY(" + xyz.y + "deg) rotateZ(" + xyz.z + "deg)",
+                "transform": "rotateX(" + xyz.x + "deg) rotateY(" + xyz.y + "deg) rotateZ(" + xyz.z + "deg)"
+            }
+        );
+
     });
 
     var mvar = 0.01;
@@ -33,6 +46,12 @@ $(function() {
 
         var xx = ((cy - ey) / cy) * 55;
         var yy = ((cx - ex) / cx) * (-50);
-        $(".perspective").css("-webkit-transform", "rotateX(" + xx + "deg) rotateY(" + yy + "deg) rotateZ(" + xyz.z + "deg)");
+        $(".perspective").css(
+            {
+                "-webkit-transform": "rotateX(" + xx + "deg) rotateY(" + yy + "deg) rotateZ(" + xyz.z + "deg)",
+                "-moz-transform": "rotateX(" + xx + "deg) rotateY(" + yy + "deg) rotateZ(" + xyz.z + "deg)",
+                "transform": "rotateX(" + xx + "deg) rotateY(" + yy + "deg) rotateZ(" + xyz.z + "deg)"
+            }
+        );
     });
 });
